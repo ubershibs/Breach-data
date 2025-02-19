@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSV Data Display</title>
+    <style>
+
+      @page {
+        margin: 0.25in;
+        size: letter;
+      }
+
+      body {
+        font-family:Verdana, Geneva, Tahoma, sans-serif
+      }
+      
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        border: 1px solid black;
+      }
+
+      th, td {
+        border: 1px solid black;
+        padding: 0.25em 0.5em;
+      }
+
+      p, td, th, tfoot td {
+        font-size: 0.75em;
+      }
+
+      .footer {
+        height: 30px;
+        font-weight: 700;
+        text-align: center;
+      }
+  </style>
+</head>
+<body>
+    <h1>PowerSchool Breach Data Review</h1>
+    <p>Prepared for: {{data.First_Name}} {{data.Last_Name}} (DOB: {{data.DOB}})</p>
+    <p>The table below contains the information about you that was improperly accessed and exported from PowerSchool in December 2024. All data accessed is present - any blank values are intentional and indicate that there was no information stored in that field for a particular individual, not that data is missing.</p>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Field</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each data}}
+                    <tr>
+                        <td>{{@key}}</td>
+                        <td>{{this}}</td>
+                    </tr>
+                {{/each}}
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="2" class="footer">
+                  Prepared for {{data.First_Name}} {{data.Last_Name}}
+                </td>
+              </tr>
+            </tfoot>
+        </table>
+    </div>
+</body>
+</html>

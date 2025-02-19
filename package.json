@@ -1,0 +1,16 @@
+{
+  "name": "csv-to-html",
+  "version": "1.0.0",
+  "description": "A simple Node.js application to extract data from a CSV file and display it as an HTML page using Handlebars.",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "csv-parser": "^3.0.0",
+    "express-handlebars": "^5.3.0"
+  },
+  "author": "",
+  "license": "ISC"
+}
