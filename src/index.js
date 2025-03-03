@@ -26,14 +26,33 @@ fs.createReadStream(path.join(__dirname, 'data', 'students.csv'))
     console.log('Rows read: ' + students.length);
   });
 
+  const staff = [];
+  fs.createReadStream(path.join(__dirname, 'data', 'staff.csv'))
+  .pipe(csv())
+  .on('data', (data) => staff.push(data))
+  .on('end', () => {
+    console.log(staff)
+    console.log('Rows read: ' + staff.length);
+  });
+
 // Route to display the CSV data
-app.get('/', (req, res) => {
+app.get('/students', (req, res) => {
   const rowIndex = parseInt(req.query.row)|| 1; // Default to the first row if no query parameter is provided
   if (rowIndex < 1 || rowIndex > students.length) {
       return res.status(400).send('Invalid row index');
   }
   const extractedData = students[rowIndex - 1];
-  res.render('index', { data: extractedData });
+  res.render('students', { data: extractedData });
+});
+
+// Route to display the CSV data
+app.get('/staff', (req, res) => {
+  const rowIndex = parseInt(req.query.row)|| 1; // Default to the first row if no query parameter is provided
+  if (rowIndex < 1 || rowIndex > staff.length) {
+      return res.status(400).send('Invalid row index');
+  }
+  const extractedData = staff[rowIndex - 1];
+  res.render('staff', { data: extractedData });
 });
 
 // Start the server 

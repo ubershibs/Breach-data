@@ -7,16 +7,17 @@
     <style>
 
       @page {
-        margin: 0.25in;
         size: letter;
       }
 
       body {
-        font-family:Verdana, Geneva, Tahoma, sans-serif
+        font-family:Verdana, Geneva, Tahoma, sans-serif;
+        width: 8in;
       }
       
       table {
-        width: 100%;
+        table-layout: fixed;
+        width: 8in;
         border-collapse: collapse;
         border: 1px solid black;
       }
@@ -24,6 +25,7 @@
       th, td {
         border: 1px solid black;
         padding: 0.25em 0.5em;
+        text-wrap: wrap;
       }
 
       p, td, th, tfoot td {
@@ -31,7 +33,7 @@
       }
 
       .footer {
-        height: 30px;
+        height: 25px;
         font-weight: 700;
         text-align: center;
       }
@@ -39,10 +41,14 @@
 </head>
 <body>
     <h1>PowerSchool Breach Data Review</h1>
-    <p>Prepared for: {{data.First_Name}} {{data.Last_Name}} (DOB: {{data.DOB}})</p>
+    {{{body}}}
     <p>The table below contains the information about you that was improperly accessed and exported from PowerSchool in December 2024. All data accessed is present - any blank values are intentional and indicate that there was no information stored in that field for a particular individual, not that data is missing.</p>
     <div>
         <table>
+          <colgroup>
+            <col style="width: 25%;">
+            <col style="width: 75%;">
+          </colgroup>
             <thead>
                 <tr>
                     <th>Field</th>
