@@ -3,13 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSV Data Display</title>
+    <title>{{data.LastFirst}}</title>
     <style>
 
       @page {
         size: letter;
       }
+      
+      @media print {
+        .noprint {
+          display: none !important;
+        }
+      }
 
+      .search {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 550px;
+      }
+
+      .redbold {
+        color: red;
+        font-weight: bold;
+      }
+      
       body {
         font-family:Verdana, Geneva, Tahoma, sans-serif;
         width: 8in;
@@ -43,6 +61,7 @@
     <h1>PowerSchool Breach Data Review</h1>
     {{{body}}}
     <p>The table below contains the information about you that was improperly accessed and exported from PowerSchool in December 2024. All data accessed is present - any blank values are intentional and indicate that there was no information stored in that field for a particular individual, not that data is missing.</p>
+    <p>This report was generated using a snapshot of the database taken the day of the incident. It does not reflect any changes made since that point.</p>
     <div>
         <table>
           <colgroup>

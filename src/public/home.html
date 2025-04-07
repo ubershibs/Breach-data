@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PowerSchool Data Breach Report Generator</title>
+  <style>
+    body {
+      font-family:Verdana, Geneva, Tahoma, sans-serif;
+      width: 8in;
+    }
+    
+    h1 {
+      margin: 20px;
+    }
+
+    form {
+      margin: 20px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+    }
+
+    label, input, button {
+      display: inline-block;
+      margin: 10px 0;
+    }
+    p {
+      margin: 20px;
+    }
+    button {
+      border: 2px solid #007BFF;
+      background-color: #007BFF;
+      border-radius: 5px;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      padding: 10px;
+    }
+    input {
+      font-size: 16px;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>PowerSchool Data Breach Report Generator</h1>
+  <p>Searches are case-dependent, and to speed things up, use "starts with" logic.</p>
+  <form action="/staffname" method="GET">
+    <label for="staffname">Staff Name (Last, First):</label>
+    <input type="text" id="staffname" name="lastfirst" required>
+    <button type="submit">Generate Report</button>
+  </form>
+  <form action="/studentname" method="GET">
+    <label for="studentname">Student Name (Last, First):</label>
+    <input type="text" id="studentname" name="lastfirst" required>
+    <button type="submit">Generate Report</button>
+  </form>
+</body>
+</html>

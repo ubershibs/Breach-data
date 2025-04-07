@@ -1,5 +1,5 @@
 {
-  "name": "csv-to-html",
+  "name": "ps-breach-csv-to-html",
   "version": "1.0.0",
   "description": "A simple Node.js application to extract data from a CSV file and display it as an HTML page using Handlebars.",
   "main": "src/index.js",
