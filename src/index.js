@@ -58,7 +58,7 @@ app.get('/studentname', (req, res) => {
     return res.status(400).send('Search term is required');
   }
 
-  const extractedData = students.find((row) => row.LastFirst.startsWith(lastfirst));
+  const extractedData = students.find((row) => row.LastFirst.toLowerCase().startsWith(lastfirst.toLowerCase()));
 
   if (!extractedData) {
     return res.status(404).send('No matching student found');
@@ -90,7 +90,7 @@ app.get('/staffname', (req, res) => {
     return res.status(400).send('Search term is required');
   }
 
-  const extractedData = staff.find((row) => row.LastFirst.startsWith(lastfirst));
+  const extractedData = staff.find((row) => row.LastFirst.toLowerCase().startsWith(lastfirst.toLowerCase()));
 
   if (!extractedData) {
     return res.status(404).send('No matching staff member found');
