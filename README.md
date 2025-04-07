@@ -1,5 +1,3 @@
-# csv-to-html/csv-to-html/README.md
-
 # PowerSchool Data Breach CSV to HTML Converter
 
 This project is a Node.js application that reads data from CSV files, allows searching for specific data based on query parameters, and displays the results as HTML pages using Handlebars as the templating engine.
