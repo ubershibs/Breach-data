@@ -1,8 +1,9 @@
 const express = require('express');
-const fs = require('fs');
+const fs = require('fs'); 
 const csv = require('csv-parser');
 const exphbs = require('express-handlebars');
 const path = require('path');
+const i18n = require('./i18n');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -16,6 +17,7 @@ app.set('views', path.join(__dirname, 'views'));
 
 // Middleware to serve static files
 app.use(express.static('public'));
+app.use(i18n.init);
 
 const students = [];
 fs.createReadStream(path.join(__dirname, 'data', 'students.csv'))
@@ -47,7 +49,7 @@ app.get('/students', (req, res) => {
       return res.status(400).send('Invalid row index');
   }
   const extractedData = students[rowIndex-2];
-  res.render('students', { data: extractedData });
+  res.render('students', { data: extractedData, __: res.__ });
 });
 
 // Route to display student CSV data by LastFirst
@@ -64,12 +66,35 @@ app.get('/studentname', (req, res) => {
     return res.status(404).send('No matching student found');
   }
   const dob = new Date(extractedData.DOB);
-  const today = new Date();
-  const ageToday = today.getFullYear() - dob.getFullYear();
+  const diff_ms = Date.now() - dob.getTime();
+  const ageDate = new Date(diff_ms);
+  const ageToday = Math.abs(ageDate.getUTCFullYear() - 1970);
 
   const adult = ageToday >= 18 ? true : false;
 
   res.render('studentname', { data: extractedData, isAdult: adult });
+});
+
+app.get('/studentnumber', (req, res) => {
+  const studentnumber = req.query.studentnumber;
+
+  if (!studentnumber) {
+    return res.status(400).send('Search term is required');
+  }
+
+  const extractedData = students.find((row) => row.Student_Number == studentnumber);
+ 
+  if (!extractedData) {
+    return res.status(404).send('No matching student found');
+  }
+  const dob = new Date(extractedData.DOB);
+  const diff_ms = Date.now() - dob.getTime();
+  const ageDate = new Date(diff_ms);
+  const ageToday = Math.abs(ageDate.getUTCFullYear() - 1970);
+
+  const adult = ageToday >= 18 ? true : false;
+
+  res.render('studentnumber', { data: extractedData, isAdult: adult });
 });
 
 // Route to display the staff CSV data by row number

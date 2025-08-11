@@ -33,6 +33,10 @@
         width: 8in;
       }
       
+      h1 { 
+        font-size:28px; 
+      }
+
       table {
         table-layout: fixed;
         width: 8in;
@@ -58,10 +62,10 @@
   </style>
 </head>
 <body>
-    <h1>PowerSchool Breach Data Review</h1>
+    <h1>{{__ "title"}}</h1>
     {{{body}}}
-    <p>The table below contains the information about you that was improperly accessed and exported from PowerSchool in December 2024. All data accessed is present - any blank values are intentional and indicate that there was no information stored in that field for a particular individual, not that data is missing.</p>
-    <p>This report was generated using a snapshot of the database taken the day of the incident. It does not reflect any changes made since that point.</p>
+    <p>{{__ "description"}} {{__ "description2"}}</p>
+    <p>{{__ "description3"}}</p>
     <div>
         <table>
           <colgroup>
@@ -70,8 +74,8 @@
           </colgroup>
             <thead>
                 <tr>
-                    <th>Field</th>
-                    <th>Value</th>
+                    <th>{{__ "field"}}</th>
+                    <th>{{__ "value"}}</th>
                 </tr>
             </thead>
             <tbody>
@@ -85,7 +89,7 @@
             <tfoot>
               <tr>
                 <td colspan="2" class="footer">
-                  Prepared for {{data.First_Name}} {{data.Last_Name}}
+                  {{__ "prepared"}}
                 </td>
               </tr>
             </tfoot>

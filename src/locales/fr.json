@@ -1,0 +1,9 @@
+{
+    "title": "Audit : Données exportées de PowerSchool",
+    "description": "Le tableau ci-dessous contient les informations vous concernant qui ont été exportées de manière inappropriée dans le cadre de l'incident de cybersécurité de PowerSchool en décembre 2024.",
+    "description2": "Toutes les données exportées sont présentes - les valeurs vides sont intentionnelles et indiquent qu'il n'y avait pas d'informations stockées dans ce champ pour une personne particulière, et non pas que des données sont manquantes.",
+    "description3": "Ce rapport a été généré à partir d'une sauvegarde de la base de données effectuée le jour de l'incident. Il ne reflète pas les modifications apportées depuis cette date.",
+    "prepared": "Préparé pour {{data.First_Name}} {{data.Last_Name}}",
+    "field": "Champ",
+    "value": "Valeur"
+}
