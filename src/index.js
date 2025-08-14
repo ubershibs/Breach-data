@@ -4,9 +4,19 @@ const csv = require('csv-parser');
 const exphbs = require('express-handlebars');
 const path = require('path');
 const i18n = require('./i18n');
+const https = require('https');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3443;
+
+// Certificate and key paths
+const certPath = path.join(__dirname, 'localhost+2.pem'); 
+const keyPath = path.join(__dirname, 'localhost+2-key.pem'); 
+
+const options = {
+  key: fs.readFileSync(keyPath),
+  cert: fs.readFileSync(certPath)
+};
 
 // Set up Handlebars as the view engine
 app.engine('hbs', exphbs({ extname: '.hbs' }));
@@ -14,6 +24,8 @@ app.set('view engine', 'hbs');
 
 // Set the views directory
 app.set('views', path.join(__dirname, 'views'));
+
+
 
 // Middleware to serve static files
 app.use(express.static('public'));
@@ -125,6 +137,6 @@ app.get('/staffname', (req, res) => {
 });
 
 // Start the server 
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+ https.createServer(options, app).listen(PORT, () => {
+    console.log(`HTTPS server running on port ${PORT}`);
 });
